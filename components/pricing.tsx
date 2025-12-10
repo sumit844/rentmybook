@@ -7,60 +7,62 @@ import Link from 'next/link';
 
 const plans = [
   {
-    name: "Daily",
-    price: "₹80",
-    period: "per meal",
+    name: "Monthy",
+    price: "₹99",
+    period: "per month",
     description: "Perfect for trying out our service",
     features: [
-      "Different variety each day",
-      "Order before 10 AM",
-      "Free delivery within 2km",
-      "Pay as you go",
+      "Access a wide variety of books",
+  "Choose books any time",
+  "₹20 delivery charge within 5 km",
+  "Pay only for the books you rent",
+  "Late fee: ₹2 per day",
+  "₹100 refundable security deposit"
     ],
     popular: false,
-    buttonText: "Order Now"
+    buttonText: "Subscribe now"
   },
   {
-    name: "Weekly",
-    price: "₹70",
-    period: "per meal",
+    name: "Quarterly",
+    price: "₹299",
+    period: "per three months",
     description: "Our most popular plan",
     features: [
-      "Choose meals for the week",
-      "₹10 discount per meal",
-      "Free delivery within 3km",
-      "Weekly billing",
-      "Menu customization"
+     "Select any books of your choice",
+  "₹15 delivery charge per book (within 5 km)",
+  "Free delivery within 3 km",
+  "Late fee: ₹1 per day",
+  "Borrow up to 2 books at a time",
+  "₹100 refundable security deposit"
     ],
     popular: true,
-    buttonText: "Start Weekly Plan"
+    buttonText: "Subscribe now"
   },
   {
-    name: "Monthly",
-    price: "₹60",
-    period: "per meal",
-    description: "Best value for regular customers",
+    name: "Peer to peer",
+    price: "₹10",
+    period: "per rental service",
+    description: "Best value for students to earn and share knowledge",
     features: [
-      "Choose meals for the month",
-      "₹20 discount per meal",
-      "Priority delivery",
-      "Free delivery within 5km",
-      "Monthly billing",
-      "Special weekend meals"
+      "Upload your book details easily",
+      "Earn ₹50 per rental on each book",
+      "We handle pickup & delivery between peers",
+      "Monthly payout to book owners",
+      "Extra perks for active contributors"
     ],
     popular: false,
-    buttonText: "Start Monthly Plan"
+    buttonText: "Subscribe now"
   },
 ];
 
 const Pricing: React.FC = () => {
   return (
-    <section id="pricing" className="py-16 bg-gray-50">
+    <section id="subscription" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">Simple, Affordable Pricing</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">Simple, Affordable Book Rental Plans</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Choose a plan that works best for you. All plans include our delicious mess food at affordable rates.
+            Choose a plan that fits your reading needs. No hidden charges—just easy and affordable access to books.
           </p>
         </div>
         
@@ -113,7 +115,7 @@ const Pricing: React.FC = () => {
         
         <div className="text-center mt-10">
           <p className="text-sm text-gray-500">
-            All plans can be canceled or modified at any time. Need a custom plan for your office or group?
+          All plans are flexible and can be modified anytime. Need a custom plan for your college or group?
             <a href="/contact" className="text-brand-orange ml-1 hover:underline">Contact us</a>.
           </p>
         </div>

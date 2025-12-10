@@ -6,8 +6,9 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-        <title>MyCloudMess</title>
-        <meta name="description" content="It provides variety of food options at affordable prices." />
+        <title>RentMyBook</title>
+        <meta name="description" content="It provides variety of books on rent on the basis of subscriptions." />
+        <link rel="icon" href="/rentmybooklogo.png"/>
         </Head>
         <body>
           <Main />

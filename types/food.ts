@@ -1,9 +1,7 @@
-export interface FoodItem {
-  id: string
-  name: string
-  description: string
-  price: number
-  category: string
-  isVeg: boolean
+export interface BookItem {
+  key: string
+  title: string
+  cover_i: string
+  author_name: string
   image?: string
 }

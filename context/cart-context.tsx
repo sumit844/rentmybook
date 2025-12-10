@@ -7,15 +7,15 @@ import {
   useEffect,
   type ReactNode,
 } from "react";
-import type { FoodItem } from "@/types/food";
+import type { BookItem } from "@/types/food";
 
-interface CartItem extends FoodItem {
+interface CartItem extends BookItem {
   quantity: number;
 }
 
 interface CartContextType {
   cartItems: CartItem[];
-  addToCart: (item: FoodItem) => void;
+  addToCart: (item: BookItem) => void;
   removeFromCart: (id: string) => void;
   increaseQuantity: (id: string) => void;
   decreaseQuantity: (id: string) => void;
@@ -45,14 +45,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (item: FoodItem) => {
+  const addToCart = (item: BookItem) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find(
-        (cartItem) => cartItem.id === item.id
+        (cartItem) => cartItem.cover_i === item.cover_i
       );
       if (existingItem) {
         return prevItems.map((cartItem) =>
-          cartItem.id === item.id
+          cartItem.cover_i === item.cover_i
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );
@@ -63,13 +63,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
   };
 
   const removeFromCart = (id: string) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    setCartItems((prevItems) => prevItems.filter((item) => item.cover_i !== id));
   };
 
   const increaseQuantity = (id: string) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        item.cover_i === id ? { ...item, quantity: item.quantity + 1 } : item
       )
     );
   };
@@ -78,11 +78,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCartItems((prevItems) =>
       prevItems
         .map((item) =>
-          item.id === id && item.quantity > 1
+          item.cover_i === id && item.quantity > 1
             ? { ...item, quantity: item.quantity - 1 }
             : item
         )
-        .filter((item) => !(item.id === id && item.quantity === 1))
+        .filter((item) => !(item.cover_i === id && item.quantity === 1))
     );
   };
 
@@ -92,7 +92,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const calculateTotal = () => {
     return cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
+      (total, item) => total + 99 * item.quantity,
       0
     );
   };

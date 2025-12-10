@@ -27,7 +27,7 @@ export default function Header() {
     <header className="border-b bg-gray-300 sticky top-0 z-10 bg-gray-100 font-bold">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link href="/" className="text-xl font-bold text-brand-orange">
-          MyCloudMess
+          <span className="text-black">RentMy</span><span>Book</span>
         </Link>
         <Link
           href="/cart"
@@ -78,10 +78,10 @@ export default function Header() {
         {/* Desktop navigation */}
         <nav className="hidden md:flex items-center gap-6">
           <Link
-            href="/"
+            href="#books"
             className="text-sm font-bold hover:text-primary text-brand-orange"
           >
-            Menu
+            Books
           </Link>
           <Link
             href="/about"

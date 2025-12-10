@@ -7,8 +7,8 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">My<span className="text-brand-orange">Cloud</span>Mess</h3>
-            <p className="text-black mb-4">Delicious, affordable meals delivered daily to your doorstep.</p>
+            <h3 className="text-xl font-bold mb-4">Rent<span className="text-brand-orange">My</span>Book</h3>
+            <p className="text-black mb-4">Learn more. Spend less.</p>
             <div className="flex space-x-4">
               <a href="#" className="text-black hover:text-brand-orange transition-colors">
                 <span className="sr-only">Facebook</span>
@@ -35,8 +35,8 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li><a href="#" className="text-black hover:text-brand-orange transition-colors">Home</a></li>
-              <li><a href="#menu" className="text-black hover:text-brand-orange transition-colors">Menu</a></li>
-              <li><a href="/pricing" className="text-black hover:text-brand-orange transition-colors">Pricing</a></li>
+              <li><a href="#book" className="text-black hover:text-brand-orange transition-colors">Books</a></li>
+              <li><a href="#subscription" className="text-black hover:text-brand-orange transition-colors">Subscription</a></li>
               <li><a href="/about" className="text-black hover:text-brand-orange transition-colors">About Us</a></li>
               <li><a href="/contact" className="text-black hover:text-brand-orange transition-colors">Contact</a></li>
             </ul>
@@ -57,8 +57,7 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
             <address className="not-italic text-black">
               <p className="mb-2">New Ashok Nagar, New Delhi</p>
-              <p className="mb-2">Phone: +91 9876543210</p>
-              <p className="mb-2">Email: info@mycloudmess.com</p>
+              <p className="mb-2">Email: info@rentmybook.co</p>
             </address>
           </div>
         </div>
