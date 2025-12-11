@@ -10,13 +10,13 @@ import { useEffect } from "react";
 export function BookList() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [bookData, setBookData] = useState<any>();
-  const [bookSearchQuery,setBookSearchQuery]=useState<string>();
+  const [bookSearchQuery, setBookSearchQuery] = useState<string>("");
   const categories = [
     { id: "maths", name: "Maths" },
-    { id: "science", name: "Science" },
-    { id: "shysics", name: "Physics" },
+    { id: "physics", name: "Physics" },
     { id: "chemistry", name: "Chemistry" },
     { id: "bio", name: "Bio" },
+    { id: "iit", name: "IIT" },
   ];
 
   const bookDataAPI = "https://openlibrary.org/search.json";
@@ -28,11 +28,31 @@ export function BookList() {
 
     return data.json();
   };
-  const fetchData = async (bookQuery:string) => {
+  const fetchData = async (bookQuery: string) => {
     const bookdata = await getBookData(bookQuery);
     console.log("bookdata", bookdata);
+
+    const filteredData = bookdata?.docs?.filter((item: any) => {
+      if (bookSearchQuery != "") {
+        if (
+          item?.title
+            ?.toLowerCase()
+            ?.includes(bookSearchQuery?.toLowerCase()) ||
+          item?.title?.toLowerCase()?.includes(activeCategory.toLowerCase())
+        ) {
+          return item;
+        }
+      } else {
+        if (
+          item?.title?.toLowerCase()?.includes(activeCategory.toLowerCase())
+        ) {
+          return item;
+        }
+      }
+    });
+    console.log("filteredData", filteredData);
     if (bookdata?.docs?.length > 0) {
-      setBookData(bookdata.docs);
+      setBookData(filteredData);
     } else {
       console.log("API is failed");
     }
@@ -61,13 +81,14 @@ export function BookList() {
             type="text"
             name="search"
             value={bookSearchQuery}
-            onBlur={(e) => setBookSearchQuery('')}
-            onChange={(e:any)=>{
+            onBlur={(e) => setBookSearchQuery("")}
+            onChange={(e: any) => {
               setBookSearchQuery(e.target.value);
-              fetchData(e.target.value);}}
+              fetchData(e.target.value);
+            }}
           />
         </div>
-       
+
         <div className="mb-[30px] pt-[10px] pb-[40px] md:p-0 bg-green-500 md:w-[75%] cursor-pointer">
           <Tabs
             defaultValue="all"
@@ -89,15 +110,12 @@ export function BookList() {
         </div>
       </div>
       <div className="">
-        {categories.map((category) => (
-          <div key={category.id}>
-            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-6">
-              {bookData?.map((item: any) => (
-                <FoodCard key={item.cover_i} book={item} />
-              ))}
+      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-6">
+              {bookData?.map((item: any) => {
+                console.log("bookDatabookData",bookData)
+                return <FoodCard key={item?.cover_i} book={item} />;
+              })}
             </div>
-          </div>
-        ))}
       </div>
       <div className="text-center mt-10">
         <p className="text-gray-600 mb-6">Want to see our full book list?</p>
