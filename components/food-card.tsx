@@ -34,13 +34,12 @@ export function FoodCard({ book }: any) {
       <CardHeader className="pt-8">
         <CardTitle className="flex justify-between items-center">
           <span>{book?.title}</span>
-          {/* <span className="text-primary">₹{food.price}</span> */}
         </CardTitle>
       </CardHeader>
-      {/* <CardContent className="p-4 pt-0">
-        <p className="text-sm text-gray-500">{food.title}</p>
-      </CardContent> */}
-      <CardFooter className="p-4 mb-0">
+      <CardContent className="p-4 pt-0 flex">
+        <p className="text-s"><span className=" text-orange-600 font-bold">Author: </span><span className="font-black">{book?.author_name?.join(' , ')}</span></p>
+      </CardContent>
+      <CardFooter className="p-4 mb-0 mt-[10px]">
         <Button onClick={() => {
           toast({
             title: "Book added to cart",
