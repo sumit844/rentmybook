@@ -88,7 +88,7 @@ export function BookList() {
           </Tabs>
         </div>
       </div>
-      <div className="container">
+      <div className="">
         {categories.map((category) => (
           <div key={category.id}>
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-6">
