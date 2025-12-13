@@ -2,23 +2,40 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 export function Hero() {
+  const sendMessage=()=>{
+    const message = `
+New Book Rental Order 📚
+Name: Rahul
+Phone: 9876543210
+Book: Lucent GK
+Address: New Ashok Nagar
+`;
+
+const whatsappUrl =
+  "https://wa.me/8507064152?text=" + encodeURIComponent(message);
+
+window.open(whatsappUrl, "_blank");
+
+  }
   return (
     <section className="hero-pattern py-16 md:py-24">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-          Your Books, Your Budget, <span className="text-brand-orange">Delivered to Your Door</span>
+          Rent Any Book at Just <span className="text-brand-orange">₹3 per Day</span>
           </h1>
           <p className="text-lg text-gray-700 mb-8">
-          Stop buying expensive textbooks! Rent from thousands of books or earn money by renting out your own. Learning has never been more affordable.
+          Perfect for all students.
+          <span className="block">No subscription. No security deposit.</span>
+          <span className="block text-black font-semibold mt-5">Minimum rental: 30 days · ₹40 one‑time delivery & return (within 5 km)</span>
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a href="#books">
-            <Button className="bg-brand-orange hover:bg-brand-orange/90 text-lg text-black bg-green-500">
-            
-              Search Books
+            <Button className="bg-brand-orange hover:bg-brand-orange/90 text-lg text-white bg-green-500">
+             Browse Books on Rent
             </Button>
             </a>
+            {/* <button onClick={()=>{sendMessage()}}>Order on whatsup</button> */}
             {/* <Button variant="outline" className="border-brand-orange text-brand-orange hover:bg-brand-orange/10 text-lg">
               Subscribe Now
             </Button> */}
