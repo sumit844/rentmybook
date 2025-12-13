@@ -92,7 +92,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const calculateTotal = () => {
     return cartItems.reduce(
-      (total, item) => total + 99 * item.quantity,
+      (total, item) => total + 90 * item.quantity,
       0
     );
   };

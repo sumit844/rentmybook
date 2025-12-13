@@ -58,13 +58,13 @@ export function FoodCard({ book }: any) {
             onClick={() => {
               toast({
                 title: "Book added to cart",
-                description: `<h1>${book.title} </h1>has been added to your cart.`,
+                description: `${book.title} has been added to your cart.`,
               });
               addToCart(book);
             }}
             className="w-full bg-green-500 hover:bg-green-600"
           >
-            <Plus className="h-4 w-4 mr-2" /> Add to Cart
+            <Plus className="h-4 w-4 mr-2" /> Rent Now
           </Button>
         </CardFooter>
       </div>

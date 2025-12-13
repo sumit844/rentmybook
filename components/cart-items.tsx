@@ -30,7 +30,7 @@ export function CartItems() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 shadow-md">
       {cartItems.map((item) => (
         <Card key={item.cover_i} className="overflow-hidden">
           <CardContent className="p-0">
@@ -44,15 +44,16 @@ export function CartItems() {
               </div>
               <div className="flex-1">
                 <h3 className="font-medium">{item.title}</h3>
-                <p className="text-sm text-gray-500">{item.title}</p>
+                {/* <p className="text-sm text-gray-500">{item.title}</p> */}
                 <div className="flex items-center justify-between mt-2">
                   {/* <span className="font-medium text-primary">₹{item.price}</span> */}
-                  <div className="flex items-center gap-2">
-                    <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => decreaseQuantity(item.cover_i)}>
+                  <div className="flex flex-col justify-start">
+                    {/* <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => decreaseQuantity(item.cover_i)}>
                       <Minus className="h-4 w-4" />
-                    </Button>
-                    <span className="w-8 text-center">{item.quantity}</span>
-                    <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => increaseQuantity(item.cover_i)}>
+                    </Button> */}
+                   <p className=" font-bold">Quantity: <span className="font-bold">{item.quantity}</span></p>
+                   <p className="font-bold"> Rental period: Minimum 30 days</p>
+                    {/* <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => increaseQuantity(item.cover_i)}>
                       <Plus className="h-4 w-4" />
                     </Button>
                     <Button
@@ -62,7 +63,7 @@ export function CartItems() {
                       onClick={() => removeFromCart(item.cover_i)}
                     >
                       <Trash2 className="h-4 w-4" />
-                    </Button>
+                    </Button> */}
                   </div>
                 </div>
               </div>

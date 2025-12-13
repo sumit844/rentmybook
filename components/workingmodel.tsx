@@ -19,7 +19,7 @@ const Workingmodel = () => {
             4. Return it easily
           </div>
         </div>
-        <p className="text-center text-sm text-gray-600 mt-4">
+        <p className="text-center text-sm text-gray-600 mt-4 font-bold">
           Late return? Just ₹4/day after 30 days.
         </p>
       </section>
@@ -42,7 +42,7 @@ const Workingmodel = () => {
               <li>• ₹90 for 30 days</li>
               <li>• Home delivery</li>
               <li>• No ownership headache</li>
-              <li>• Save try</li> 
+              <li>• Save tree</li> 
             </ul>
           </div>
         </div>
@@ -62,7 +62,7 @@ const Workingmodel = () => {
 Fast delivery · Simple pricing · No security deposit
 </p>
 </section>
-<section className="py-14 px-6 mx-auto text-center">
+<section className="py-14 px-6 mx-auto text-center" id="faq">
 <h2 className="text-4xl font-bold text-center mb-8">Frequently Asked Questions</h2>
 <div className="space-y-6">
 <div>
