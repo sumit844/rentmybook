@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
         
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-black text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} MyCloudMess. All rights reserved.
+            &copy; {new Date().getFullYear()} RentMyBook. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a href="#" className="text-sm text-black hover:text-brand-orange transition-colors">Privacy Policy</a>

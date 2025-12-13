@@ -6,9 +6,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { foodItems } from "@/data/food-items";
 import Link from "next/link";
 import { useEffect } from "react";
-
+import { useCart } from "@/context/cart-context";
 export function BookList() {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState("NCERT");
   const [bookData, setBookData] = useState<any>();
   const [bookSearchQuery, setBookSearchQuery] = useState<string>("");
   const categories = [
@@ -18,7 +18,11 @@ export function BookList() {
     { id: "bio", name: "Bio" },
     { id: "iit", name: "IIT" },
   ];
-
+  const { cartItems } = useCart();
+  const totalItems = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
   const bookDataAPI = "https://openlibrary.org/search.json";
 
   const getBookData = async (bookName: string) => {
@@ -63,20 +67,20 @@ export function BookList() {
   }, [activeCategory]);
 
   return (
-    <div id="books" className="py-8">
+    <div className="py-8">
       {/* <h2 className="text-3xl font-bold mb-8 text-center">Our Menu</h2> */}
       <h2 className="text-3xl md:text-4xl font-bold mb-3 text-center">
         <span className="text-brand-green text-center">RentMyBook</span>
         <span className="text-brand-orange text-center"></span> - Our Book
         Collection
       </h2>
-      <p className="text-gray-600 max-w-2xl mx-auto mb-8 text-center">
+      <p className="text-gray-600 max-w-2xl mx-auto mb-8 text-center" id="books">
         We provide service of rental book for more than 12000 books.
       </p>
-      <div className="flex flex-col md:flex-row justify-evenly">
-        <div className="mb-[5px] md:mb-0 md:w-[20%]">
+      <div className="flex flex-col md:flex-row justify-evenly mb-4">
+        <div className="mb-[5px] md:mb-0 md:w-[20%] flex relative md:h-[2.5rem]">
           <input
-            className="text-white relative focus:bg-orange-600 bg-green-500 placeholder:text-white placeholder:italic ...  p-[8px] w-full rounded-lg"
+            className="text-white relative pl-8 bg-orange-600 focus:bg-green-500 placeholder:text-white placeholder:italic ...  p-[.5rem] w-full rounded-lg"
             placeholder="Search any book..."
             type="text"
             name="search"
@@ -87,9 +91,16 @@ export function BookList() {
               fetchData(e.target.value);
             }}
           />
+          <button className="absolute top-2 md:top-2 left-2 text-white" onClick={()=>{
+            fetchData(bookSearchQuery)
+          }}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          </svg>
+          </button>
         </div>
 
-        <div className="mb-[30px] pt-[10px] pb-[40px] md:p-0 bg-green-500 md:w-[75%] cursor-pointer">
+        <div className="hidden md:block mb-[30px] pt-[10px] pb-[40px] md:p-0 bg-green-500 md:w-[75%] cursor-pointer">
           <Tabs
             defaultValue="all"
             onValueChange={setActiveCategory}
@@ -115,7 +126,7 @@ export function BookList() {
                 console.log("bookDatabookData",bookData)
                 return <FoodCard key={item?.cover_i} book={item} />;
               })}
-            </div>
+      </div>
       </div>
       <div className="text-center mt-10">
         <p className="text-gray-600 mb-6">Want to see our full book list?</p>
@@ -125,6 +136,9 @@ export function BookList() {
           </button>
         </Link>
       </div>
+      {totalItems>0 && <div className="fixed bottom-1 z-30 bg-orange-600 hover:bg-green-600 w-[90%] md:hidden text-center rounded-full">
+        <button className=" p-4 mx-8">Place order</button>
+      </div>}
     </div>
   );
 }
