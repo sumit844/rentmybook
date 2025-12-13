@@ -67,14 +67,14 @@ export function BookList() {
   }, [activeCategory]);
 
   return (
-    <div className="py-8">
+    <div className="py-8" id="books">
       {/* <h2 className="text-3xl font-bold mb-8 text-center">Our Menu</h2> */}
       <h2 className="text-3xl md:text-4xl font-bold mb-3 text-center">
         <span className="text-brand-green text-center">RentMyBook</span>
         <span className="text-brand-orange text-center"></span> - Our Book
         Collection
       </h2>
-      <p className="text-gray-600 max-w-2xl mx-auto mb-8 text-center" id="books">
+      <p className="text-gray-600 max-w-2xl mx-auto mb-8 text-center">
         We provide service of rental book for more than 12000 books.
       </p>
       <div className="flex flex-col md:flex-row justify-evenly mb-4">
