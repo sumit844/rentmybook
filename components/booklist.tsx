@@ -7,6 +7,7 @@ import { foodItems } from "@/data/food-items";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useCart } from "@/context/cart-context";
+import { Router, useRouter } from "next/router";
 export function BookList() {
   const [activeCategory, setActiveCategory] = useState("NCERT");
   const [bookData, setBookData] = useState<any>();
@@ -24,7 +25,7 @@ export function BookList() {
     0
   );
   const bookDataAPI = "https://openlibrary.org/search.json";
-
+const router=useRouter();
   const getBookData = async (bookName: string) => {
     const data = await fetch(
       `${bookDataAPI}?q=${bookName}&fields=key,title,author_name,cover_i`
@@ -62,10 +63,14 @@ export function BookList() {
     }
     //
   };
+  
   useEffect(() => {
     fetchData(activeCategory);
   }, [activeCategory]);
 
+  const goToTheCart=()=>{
+    router.push('/cart')
+  }
   return (
     <div className="py-8" id="books">
       {/* <h2 className="text-3xl font-bold mb-8 text-center">Our Menu</h2> */}
@@ -137,7 +142,7 @@ export function BookList() {
         </Link>
       </div>
       {totalItems>0 && <div className="fixed bottom-1 z-30 bg-orange-600 hover:bg-green-600 w-[90%] md:hidden text-center rounded-full">
-        <button className=" p-4 mx-8">Place order</button>
+        <button className=" p-4 mx-8" onClick={()=>{goToTheCart()}}>Place order</button>
       </div>}
     </div>
   );
